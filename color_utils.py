@@ -39,7 +39,7 @@ def hex_to_rgb_color_list(colors):
 
 def blended_cmap(rgb_color_list):
     """
-    Created a colormap blending from one color to the other.
+    Create a colormap blending from one color to the other.
 
     Parameters:
         - rgb_color_list: A list of colors represented as [R, G, B] values
@@ -75,10 +75,7 @@ def blended_cmap(rgb_color_list):
         updates = []
         for seg in range(1, segment_count + 1):
             # determine how much needs to be added back to account for remainders
-            if not remainder or seg > 1:
-                offset = 0
-            else:
-                offset = remainder
+            offset = 0 if not remainder or seg > 1 else remainder
 
             updates.append(np.linspace(
                 start=rgb_color_list[seg-1][i],
