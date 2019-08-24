@@ -26,7 +26,7 @@ def hex_to_rgb_color_list(colors):
 
         if hex_length not in [3, 6]:
             raise ValueError(
-                'Your colors must be of the form #FFFFFF or #FFFFFF'
+                'Your colors must be of the form #FFF or #FFFFFF'
             )
 
         regex = '.' * (hex_length // 3)
