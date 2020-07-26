@@ -87,18 +87,20 @@ def blended_cmap(rgb_color_list):
 
     return ListedColormap(rgbas)
 
-def draw_cmap(cmap):
+def draw_cmap(cmap, values=np.array([[0, 1]]), **kwargs):
     """
     Draw a colorbar for visualizing a colormap.
 
     Parameters:
         - cmap: A matplotlib colormap
-
+        - values: The values to use for the colormap, defaults to [0, 1]
+        - **kwargs: Additional keyword arguments to pass to `plt.colorbar()`
+        
     Returns:
         A matplotlib colorbar, which you can save with:
         `plt.savefig(<file_name>, bbox_inches='tight')`
     """
-    img = plt.imshow(np.array([[0,1]]), cmap=cmap)
-    cbar = plt.colorbar(orientation='horizontal', cmap=cmap)
+    img = plt.imshow(values, cmap=cmap)
+    cbar = plt.colorbar(cmap=cmap, **kwargs)
     img.axes.remove()
     return cbar
